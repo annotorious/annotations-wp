@@ -1,0 +1,19 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ #annotorious-image-annotate, #recogito-document-annotate {
+   display: none;
+ }
+ #recogito-annotations {
+   margin-top: 20px;
+   margin-bottom: 20px;
+ }
+ #annotorious-annotations {
+   margin-bottom: 20px;
+ }
+
+.annotorious-image {
+  width: 100%;
+}
