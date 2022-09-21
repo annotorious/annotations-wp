@@ -79,7 +79,7 @@
 
 		// Initialize and set events for Recogito
 		recogitoInstance = Recogito.init({
-			content: document.getElementById('recogito-annotations') // ID or DOM element
+			content: document.getElementById('recogito-annotations'), // ID or DOM element
 		});
 
 		recogitoInstance.on('createAnnotation', function(annotation) {

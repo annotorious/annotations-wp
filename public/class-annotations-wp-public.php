@@ -121,6 +121,8 @@ class Annotations_Wp_Public {
 			$post_id = $atts['id'];
 
 			$document_type = get_field('document_type', $post_id);
+			$editing = get_field('allow_editing', $post_id);
+			$language = get_field('language', $post_id);
 			if($document_type == 'image') {
 				wp_enqueue_style( 'annotorious-css', plugin_dir_url( __FILE__ ) . '../admin/css/vendor/annotorious.min.css', array(), $this->version, 'all' );
 				wp_enqueue_script( 'annotorious-js', plugin_dir_url( __FILE__ ) . '../admin/js/vendor/annotorious.min.js', array( 'jquery' ), $this->version, true );
@@ -129,7 +131,7 @@ class Annotations_Wp_Public {
 				$json = get_post_meta($post_id, 'annotorious_annotation_object', true);
 
 				return "
-					<div class='annotations-wp-container' data-id='" . $post_id . "' data-type='" . $document_type . "' data-json='" . $json . "'>
+					<div class='annotations-wp-container' data-id='" . $post_id . "' data-type='" . $document_type . "' data-json='" . $json . "' data-editing='" .  ($editing ? "true" : "false") . "' data-language='" . $language . "'>
 						<img id='annotorious-" . $post_id . "' src='" . $image . "' />
 					</div>
 				";
@@ -142,7 +144,7 @@ class Annotations_Wp_Public {
 				$json = get_post_meta($post_id, 'recogito_annotation_object', true);
 
 				return "
-					<div class='annotations-wp-container' data-id='" . $post_id . "' data-type='" . $document_type . "' data-json='" . $json . "'>
+					<div class='annotations-wp-container' data-id='" . $post_id . "' data-type='" . $document_type . "' data-json='" . $json . "' data-editing='" . ($editing ? "true" : "false") . "' data-language='" . $language . "'>
 						<div id='recogito-" . $post_id . "'>" . $content . "</div>
 					</div>
 				";
